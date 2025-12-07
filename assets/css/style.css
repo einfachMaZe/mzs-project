@@ -122,7 +122,7 @@ h1 {
 
 main,
 footer {
-	max-width: 800px;
+	max-width: 1100px;
 	margin: 0 auto 80px auto;
 	border: 1px solid goldenrod;
 	border-radius: 8px;
@@ -195,18 +195,45 @@ footer a {
 
 /* ANCHOR ================= projects.html ================= */
 
-.div-project {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.projects {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 24px;
+	padding: 24px;
 }
 
-.div-project h2 {
-	margin-bottom: 16px;
+.projects-card {
+	text-align: center;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	padding: 16px;
+	box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+	transition: transform 0.25s ease;
 }
 
-.div-project img {
-	width: 150px;
+.projects-card h3 {
+	border-top: 1px solid black;
+}
+
+.projects-card:hover {
+	transform: translateY(-4px);
+}
+
+/* Fester Bildbereich in der Karte */
+.project-thumb {
+	width: 100%;
+	height: 150px; /* alle Vorschaubilder gleich hoch */
+	overflow: hidden; /* nichts kann „rausgucken“ */
+	border-radius: 6px;
+	margin-bottom: 8px;
+}
+
+/* Bild füllt die Box, ohne die Karte zu ändern */
+.project-thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: scale-down; /* kein Verzerren, nur Zuschneiden */
+	display: block;
 }
 
 /* ============================================= */
