@@ -1,4 +1,5 @@
 /* ANCHOR === Variabeln ================= */
+/* Farben zentral definieren → leichtes Thema-Ändern möglich */
 :root {
 	--primary-bg-color: #e9e9e9;
 	--primary-link-color: #2cc08a;
@@ -9,6 +10,7 @@
 }
 
 /* ANCHOR === General ================= */
+/* Basis-Reset + moderne Box-Berechnung */
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -17,66 +19,66 @@
 
 html {
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	-moz-osx-font-smoothing: grayscale; /* glattere Schrift */
 }
 
+/* verhindert horizontales Scrollen */
 html,
 body {
-	/* Seite ist niemals breiter als der Browser */
 	max-width: 100%;
-	/* Alles, was links/rechts übersteht, wird abgeschnitten, statt scrollbar zu sein. */
 	overflow-x: hidden;
 }
 
+/* Standardlistendarstellung ausschalten */
 ul {
 	list-style: none;
 }
 
+/* Grund-Textstil */
 body {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: 1rem;
 	background-color: #e9e9e9;
 }
 
+/* Links ohne Unterstrich */
 a {
 	text-decoration: none;
 }
 
 /* ============================================= */
-
 /* ANCHOR === Headerbereich ================= */
 
 header {
 	width: 100%;
-	position: sticky;
+	position: sticky; /* bleibt beim Scrollen oben kleben */
 	top: 0;
 	background-color: #f5f5f5;
 	margin-bottom: 80px;
 	padding: 25px 25px;
 	box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
 	border-bottom: 1px solid #daa520;
-	position: relative;
+
+	/* Hintergrund mit Bild */
 	background-image: url('/assets/img/headerbg.png');
 	background-size: cover;
 	background-position: center;
 	overflow: hidden;
-	position: relative;
+	position: relative; /* für Overlay nötig */
 	z-index: 0;
 }
 
+/* Overlay zum Abdunkeln des Header-Bildes → Text bleibt lesbar */
 header::before {
 	content: '';
 	position: absolute;
 	inset: 0;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(255, 255, 255, 0.5); /* Weißer Schleier */
-	pointer-events: none; /* verhindert Klick-Probleme */
+	background-color: rgba(255, 255, 255, 0.5);
+	pointer-events: none;
 	z-index: 0;
 }
 
+/* Inhalt bleibt vom Overlay unberührt */
 .header-inner {
 	max-width: 1100px;
 	margin: 0 auto;
@@ -88,22 +90,23 @@ header::before {
 	z-index: 1;
 }
 
+/* Navigation im Header – horizontale Liste */
 header ul {
 	display: flex;
 	flex-direction: row;
 	gap: 16px;
 }
 
+/* Logo/Seitentitel */
 h1 {
 	filter: drop-shadow(0 2px 4px #ffffff);
-	white-space: nowrap;
-	flex-shrink: 0;
+	white-space: nowrap; /* verhindert Zeilenumbruch */
+	flex-shrink: 0; /* verhindert Zusammenquetschen */
 	font-size: 48px;
 	margin-right: 16px;
 }
 
 /* ============================================= */
-
 /* ANCHOR === Navigation ================= */
 
 .nav-container {
@@ -114,39 +117,43 @@ h1 {
 	width: 100%;
 }
 
+/* Button-Container – hält Buttons zusammen */
 .nav-buttons {
 	display: flex;
 	flex: 1;
 	filter: drop-shadow(4px 4px 4px black);
 }
 
+/* Hauptnavigation – alle Buttons gleichbreit */
 .nav-button {
 	background-color: #2cc08a;
 	color: white;
 	padding: 12px 24px;
 	cursor: pointer;
 	font-size: 16px;
-	flex: 1; /* alle gleich breit innerhalb .nav-buttons */
-	min-width: 120px; /* verhindert zu schmale Buttons */
+	flex: 1;
+	min-width: 120px;
 	text-align: center;
 	white-space: nowrap;
 	display: inline-block;
 }
 
+/* Runde Ecken Links/Rechts */
 .nav-1 {
 	border-start-start-radius: 8px;
 	border-end-start-radius: 8px;
 }
-
 .nav-4 {
 	border-start-end-radius: 8px;
 	border-end-end-radius: 8px;
 }
 
+/* Hover-Farbe */
 .nav-container .nav-button:hover {
 	background-color: #34628f;
 }
 
+/* deaktivierter Nav-Button */
 .nav-button-disable {
 	opacity: 0.4;
 	cursor: not-allowed;
@@ -164,10 +171,12 @@ footer {
 	box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Abstand im Content */
 main {
 	padding: 24px;
 }
 
+/* ============================================= */
 /* ANCHOR === Footerbereich ================= */
 
 footer ul {
@@ -182,6 +191,7 @@ footer ul li {
 	align-items: center;
 }
 
+/* Herz & Made with */
 .footer-made {
 	font-family: monospace;
 }
@@ -190,57 +200,54 @@ footer ul li {
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
+/* Footer-Links (Hover verschiebt nix) */
 .footer-link {
 	color: #2cc08a;
 	display: inline-block;
 	border: 4px solid transparent;
 	border-radius: 4px;
-	text-decoration: none;
 	transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-
 .footer-link:hover {
 	background-color: #d3d3d3;
-	border-radius: 4px;
 	cursor: pointer;
 }
 
+/* Social Link Spalte */
 .links {
 	display: flex;
 	flex-direction: column;
-	gap: 0;
-	margin-bottom: 5px;
+	margin-bottom: 16px;
+	gap: 2px;
 }
-
 .links a {
 	color: #808080;
-	display: block;
 	text-align: center;
 }
 
-/* Social Icons */
+/* ============================================= */
+/* ANCHOR === Social Icons im Header ================= */
 
 .nav-social {
 	display: flex;
 	align-items: center;
-	flex-direction: row;
 	gap: 12px;
-	list-style: none;
+	margin-bottom: 8px;
 }
 
+/* Social Icons Bild-Effekt */
 .nav-social li img {
 	height: 25px;
 	width: 25px;
 	filter: drop-shadow(4px 4px 4px #444444);
 	transition: transform 0.2s ease;
 }
-
 .nav-social li img:hover {
 	transform: scale(1.2);
 	filter: drop-shadow(0 0 6px #000000);
 }
-/* ============================================= */
 
+/* ============================================= */
 /* ANCHOR === changelog.html ================= */
 
 .changelog {
@@ -251,12 +258,12 @@ footer ul li {
 	margin-bottom: 16px;
 }
 
+/* Versionseintrag */
 .change-link {
 	color: #d3d3d3;
 }
 
 /* ============================================= */
-
 /* ANCHOR === projects.html ================= */
 
 .projects {
@@ -266,43 +273,45 @@ footer ul li {
 	padding: 24px;
 }
 
+/* Einzelkarte */
 .projects-card {
 	text-align: center;
-	border: 1px solid transparent;
 	border-radius: 8px;
 	padding: 16px;
 	box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 	transition: transform 0.25s ease;
 }
 
+/* Überschrift mit Trenner */
 .projects-card h2 {
-	border-top: 1px solid #000000;
+	border-top: 1px solid #000;
 }
 
+/* Hover-Bewegung */
 .projects-card:hover {
 	transform: translateY(-4px);
 }
 
-/* Fester Bildbereich in der Karte */
+/* Bildbereich fix, Bild passt sich an */
 .project-thumb {
 	width: 100%;
-	height: 150px; /* alle Vorschaubilder gleich hoch */
-	overflow: hidden; /* nichts kann „rausgucken“ */
+	height: 150px;
+	overflow: hidden;
 	border-radius: 6px;
 	margin-bottom: 8px;
 }
 
-/* Bild füllt die Box, ohne die Karte zu ändern */
+/* Bild wird passend verkleinert — nie verzerrt */
 .project-thumb img {
 	width: 100%;
 	height: 100%;
-	object-fit: scale-down; /* Bild wird nur verkleinert, ggf. mit Rand – kein Zuschneiden */
+	object-fit: scale-down;
 	display: block;
 }
 
 /* ============================================= */
-
 /* ANCHOR === impressum.html ================== */
+
 #legal-datenschutz h2,
 #legal-datenschutz h3,
 #legal-impressum h2,
@@ -322,21 +331,23 @@ footer ul li {
 #legal-impressum ul {
 	padding-left: 20px;
 }
-/* ============================================== */
 
+/* ============================================= */
 /* ANCHOR === about.html ================= */
+/* Biografie-Seite */
+
 .about {
 	max-width: 800px;
 	text-align: left;
 	padding: 16px;
 }
 
+/* Avatar-Kreisbild */
 .avatar-wrapper {
 	width: 130px;
 	height: 130px;
 	margin: 0 auto 20px auto;
 }
-
 .avatar {
 	width: 100%;
 	height: 100%;
@@ -345,23 +356,21 @@ footer ul li {
 	filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
 	transition: transform 0.2s ease;
 }
-
 .avatar:hover {
 	transform: scale(1.1);
 }
 
+/* Überschriften und Texte */
 .about h2,
 .about h3 {
+	text-align: center;
 	margin-top: 24px;
 	margin-bottom: 12px;
-	text-align: center;
 }
-
 .about p,
 .about ul {
 	margin-bottom: 16px;
 }
-
 .about ul {
 	padding-left: 20px;
 }
@@ -369,7 +378,7 @@ footer ul li {
 /* ============================================= */
 
 /* === Upcoming ================= */
-/* .hoch für Header h1 */
+/* Beispielklasse für hochgestellten Text */
 /*
 .hoch {
 	font-size: 22px;
